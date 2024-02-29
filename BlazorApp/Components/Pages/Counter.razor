@@ -17,7 +17,7 @@
 
 @code {
     private DateTime inputBirthday;
-    private Type60? matchedUser;
+    private Type60? matchedType;
     private bool searchPerformed = false;
 
     private async Task SearchBirthday()
@@ -31,7 +31,7 @@
             int daysSinceEpoch = (inputBirthday - epoch).Days;
             int remainder = daysSinceEpoch % 60;
 
-            matchedUser = bdss?.FirstOrDefault(t => t.SixtyType == remainder.ToString());
+            matchedType = bdss?.FirstOrDefault(t => t.SixtyType == remainder.ToString());
             searchPerformed = true;
         }
         catch (Exception ex)
