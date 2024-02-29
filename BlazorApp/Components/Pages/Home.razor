@@ -1,0 +1,36 @@
+﻿@page "/"
+
+<PageTitle>Birthday Registration</PageTitle>
+
+<h1>Birthday Registration</h1>
+
+<EditForm Model="@this" OnValidSubmit="@RegisterBirthday">
+    <DataAnnotationsValidator />
+
+    <div class="mb-3">
+        <label for="birthday" class="form-label">Birthday:</label>
+        <InputDate @bind-Value="@Birthday" id="birthday" class="form-control" />
+        <ValidationMessage For="@(() => Birthday)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</EditForm>
+
+@if (RegistrationMessage != null)
+{
+    <div class="alert alert-info" role="alert">
+        @RegistrationMessage
+    </div>
+}
+
+@code {
+    private DateTime Birthday { get; set; } = DateTime.Today;
+    private string? RegistrationMessage;
+
+    private void RegisterBirthday()
+    {
+        // ここに登録のためのロジックを記述します。
+        // 例えば、データベースに保存するなど。
+        RegistrationMessage = $"Registered Birthday: {Birthday.ToString("yyyy/MM/dd")}";
+    }
+}

@@ -1,0 +1,64 @@
+﻿@page "/counter"
+@rendermode InteractiveServer
+
+<PageTitle>Counter</PageTitle>
+
+<EditForm Model="@this" OnValidSubmit="@SearchBirthday">
+    <DataAnnotationsValidator />
+
+    <div class="mb-3">
+        <label for="birthday" class="form-label">Enter Birthday:</label>
+        <InputDate @bind-Value="@inputBirthday" id="birthday" class="form-control" />
+        <ValidationMessage For="@(() => inputBirthday)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Search</button>
+</EditForm>
+
+@if (matchedUser != null)
+{
+    <div class="alert alert-success" role="alert">
+        <strong>Match Found!</strong> Name: @matchedUser.name, Birthday: @matchedUser.birthday
+    </div>
+}
+else if (searchPerformed)
+{
+    <div class="alert alert-danger" role="alert">
+        No matches found.
+    </div>
+}
+
+@code {
+    private DateTime inputBirthday;
+    private type60? matchedUser;
+    private bool searchPerformed = false;
+    
+    private async Task SearchBirthday()
+    {
+        var httpClient = new HttpClient();
+        var bdss = await httpClient.GetFromJsonAsync<List<type60>>("https://localhost:7165/data/60t.json");
+
+        // 基準日の設定 (Unix エポック)
+        DateTime epoch = new DateTime(1970, 1, 1);
+
+        // 経過日数の計算
+        int daysSinceEpoch = (inputBirthday - epoch).Days;
+
+        // 経過日数を60で割った剰余
+        int remainder = daysSinceEpoch % 60;
+
+        matchedUser = bdss?.FirstOrDefault(t => t.60type == remainder);
+        searchPerformed = true;
+    }
+
+    public class type60
+    {
+        public string 60type { get; set; };
+        public string 12type { get; set; };
+        public string insideType { get; set; };
+        public string focusType { get; set; };
+        public string setume { get; set; };
+        public string ani60 { get; set; };
+        public string ani12 { get; set; };
+    }
+}
