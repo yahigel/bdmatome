@@ -15,50 +15,39 @@
     <button type="submit" class="btn btn-primary">Search</button>
 </EditForm>
 
-@if (matchedUser != null)
-{
-    <div class="alert alert-success" role="alert">
-        <strong>Match Found!</strong> Name: @matchedUser.name, Birthday: @matchedUser.birthday
-    </div>
-}
-else if (searchPerformed)
-{
-    <div class="alert alert-danger" role="alert">
-        No matches found.
-    </div>
-}
-
 @code {
     private DateTime inputBirthday;
-    private type60? matchedUser;
+    private Type60? matchedUser;
     private bool searchPerformed = false;
-    
+
     private async Task SearchBirthday()
     {
-        var httpClient = new HttpClient();
-        var bdss = await httpClient.GetFromJsonAsync<List<type60>>("https://localhost:7165/data/60t.json");
+        try
+        {
+            var httpClient = new HttpClient();
+            var bdss = await httpClient.GetFromJsonAsync<List<Type60>>("https://localhost:7165/data/60t.json");
 
-        // 基準日の設定 (Unix エポック)
-        DateTime epoch = new DateTime(1970, 1, 1);
+            DateTime epoch = new DateTime(1970, 1, 1);
+            int daysSinceEpoch = (inputBirthday - epoch).Days;
+            int remainder = daysSinceEpoch % 60;
 
-        // 経過日数の計算
-        int daysSinceEpoch = (inputBirthday - epoch).Days;
-
-        // 経過日数を60で割った剰余
-        int remainder = daysSinceEpoch % 60;
-
-        matchedUser = bdss?.FirstOrDefault(t => t.60type == remainder);
-        searchPerformed = true;
+            matchedUser = bdss?.FirstOrDefault(t => t.SixtyType == remainder.ToString());
+            searchPerformed = true;
+        }
+        catch (Exception ex)
+        {
+            // ここでエラーを処理します（例: ログを記録する）
+        }
     }
 
-    public class type60
+    public class Type60
     {
-        public string 60type { get; set; };
-        public string 12type { get; set; };
-        public string insideType { get; set; };
-        public string focusType { get; set; };
-        public string setume { get; set; };
-        public string ani60 { get; set; };
-        public string ani12 { get; set; };
+        public string SixtyType { get; set; }
+        public string TwelveType { get; set; }
+        public string InsideType { get; set; }
+        public string FocusType { get; set; }
+        public string Setume { get; set; }
+        public string Ani60 { get; set; }
+        public string Ani12 { get; set; }
     }
 }
