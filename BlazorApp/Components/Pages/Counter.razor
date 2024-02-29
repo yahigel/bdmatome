@@ -14,6 +14,32 @@
 
     <button type="submit" class="btn btn-primary">Search</button>
 </EditForm>
+<br />
+@if (searchPerformed)
+{
+    if (matchedType != null)
+    {
+        <div class="card">
+            <div class="card-header">
+                Birthday Analyze Details
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">動物： @matchedType.Ani60 @matchedType.Ani12</li>
+                <li class="list-group-item">ＢＤＳ６０： @matchedType.SixtyType</li>
+                <li class="list-group-item">ＢＤＳ１２： @matchedType.TwelveType</li>
+                <li class="list-group-item">インサイド１２： @matchedType.InsideType</li>
+                <li class="list-group-item">フォーカス１２： @matchedType.FocusType</li>
+                <li class="list-group-item">詳細：<br/> @matchedType.Setume</li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+            No matching user found.
+        </div>
+    }
+}
 
 @code {
     private DateTime inputBirthday;
@@ -27,7 +53,7 @@
             var httpClient = new HttpClient();
             var bdss = await httpClient.GetFromJsonAsync<List<Type60>>("https://localhost:7165/data/60t.json");
 
-            DateTime epoch = new DateTime(1970, 1, 1);
+            DateTime epoch = new DateTime(1899, 12, 30);
             int daysSinceEpoch = (inputBirthday - epoch).Days;
             int remainder = daysSinceEpoch % 60;
 
