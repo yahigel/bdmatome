@@ -3,12 +3,6 @@ C:\Users\user\source\repos\BlazorApp\BlazorApp\obj\Debug\net8.0\BlazorApp.Assemb
 C:\Users\user\source\repos\BlazorApp\BlazorApp\obj\Debug\net8.0\BlazorApp.AssemblyInfo.cs
 C:\Users\user\source\repos\BlazorApp\BlazorApp\obj\Debug\net8.0\BlazorApp.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\BlazorApp\BlazorApp\obj\Debug\net8.0\BlazorApp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\BlazorApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\BlazorApp.AssemblyInfoInputs.cache
-C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\BlazorApp.AssemblyInfo.cs
-C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\BlazorApp.csproj.CoreCompileInputs.cache
-C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\BlazorApp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\BlazorApp.sourcelink.json
 C:\Users\user\source\repos\bdmatome\BlazorApp\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\user\source\repos\bdmatome\BlazorApp\bin\Debug\net8.0\appsettings.json
 C:\Users\user\source\repos\bdmatome\BlazorApp\bin\Debug\net8.0\BlazorApp.staticwebassets.runtime.json
@@ -17,6 +11,12 @@ C:\Users\user\source\repos\bdmatome\BlazorApp\bin\Debug\net8.0\BlazorApp.deps.js
 C:\Users\user\source\repos\bdmatome\BlazorApp\bin\Debug\net8.0\BlazorApp.runtimeconfig.json
 C:\Users\user\source\repos\bdmatome\BlazorApp\bin\Debug\net8.0\BlazorApp.dll
 C:\Users\user\source\repos\bdmatome\BlazorApp\bin\Debug\net8.0\BlazorApp.pdb
+C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\BlazorApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\BlazorApp.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\BlazorApp.AssemblyInfo.cs
+C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\BlazorApp.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\BlazorApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\BlazorApp.sourcelink.json
 C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\user\source\repos\bdmatome\BlazorApp\obj\Debug\net8.0\staticwebassets\msbuild.BlazorApp.Microsoft.AspNetCore.StaticWebAssets.props
