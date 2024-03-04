@@ -1,74 +1,74 @@
 ﻿[
     {
-        "12type": "1",
-        "12type_name": "オリジナリティタイプ",
-        "6type_name": "オウンマインド（天下取りタイプ）",
-        "3type_name": "結果"
+        "type12": "1",
+        "type12_name": "オリジナリティタイプ",
+        "type6_name": "オウンマインド（天下取りタイプ）",
+        "type3_name": "結果"
     },
     {
-        "12type": "108",
-        "12type_name": "ナチュラルタイプ",
-        "6type_name": "セーフティ（無邪気タイプ）",
-        "3type_name": "人柄"
+        "type12": "108",
+        "type12_name": "ナチュラルタイプ",
+        "type6_name": "セーフティ（無邪気タイプ）",
+        "type3_name": "人柄"
     },
     {
-        "12type": "919",
-        "12type_name": "フロンティアタイプ",
-        "6type_name": "ドリーム（勝負師タイプ）",
-        "3type_name": "結果"
+        "type12": "919",
+        "type12_name": "フロンティアタイプ",
+        "type6_name": "ドリーム（勝負師タイプ）",
+        "type3_name": "結果"
     },
     {
-        "12type": "888",
-        "12type_name": "チャレンジタイプ",
-        "6type_name": "パワフル（行動的タイプ）",
-        "3type_name": "直感"
+        "type12": "888",
+        "type12_name": "チャレンジタイプ",
+        "type6_name": "パワフル（行動的タイプ）",
+        "type3_name": "直感"
     },
     {
-        "12type": "12",
-        "12type_name": "スタートダッシュタイプ",
-        "6type_name": "レベルアップ（フレンドリータイプ）",
-        "3type_name": "人柄"
+        "type12": "12",
+        "type12_name": "スタートダッシュタイプ",
+        "type6_name": "レベルアップ（フレンドリータイプ）",
+        "type3_name": "人柄"
     },
     {
-        "12type": "100",
-        "12type_name": "キャリアタイプ",
-        "6type_name": "ステータス（天才肌タイプ）",
-        "3type_name": "直感"
+        "type12": "100",
+        "type12_name": "キャリアタイプ",
+        "type6_name": "ステータス（天才肌タイプ）",
+        "type3_name": "直感"
     },
     {
-        "12type": "555",
-        "12type_name": "オールマイティタイプ",
-        "6type_name": "オウンマインド（天下取りタイプ）",
-        "3type_name": "結果"
+        "type12": "555",
+        "type12_name": "オールマイティタイプ",
+        "type6_name": "オウンマインド（天下取りタイプ）",
+        "type3_name": "結果"
     },
     {
-        "12type": "789",
-        "12type_name": "クールタイプ",
-        "6type_name": "セーフティ（無邪気タイプ）",
-        "3type_name": "人柄"
+        "type12": "789",
+        "type12_name": "クールタイプ",
+        "type6_name": "セーフティ（無邪気タイプ）",
+        "type3_name": "人柄"
     },
     {
-        "12type": "125",
-        "12type_name": "ロマンタイプ",
-        "6type_name": "ドリーム（勝負師タイプ）",
-        "3type_name": "結果"
+        "type12": "125",
+        "type12_name": "ロマンタイプ",
+        "type6_name": "ドリーム（勝負師タイプ）",
+        "type3_name": "結果"
     },
     {
-        "12type": "24",
-        "12type_name": "プロフェッショナルタイプ",
-        "6type_name": "パワフル（行動的タイプ）",
-        "3type_name": "直感"
+        "type12": "24",
+        "type12_name": "プロフェッショナルタイプ",
+        "type6_name": "パワフル（行動的タイプ）",
+        "type3_name": "直感"
     },
     {
-        "12type": "25",
-        "12type_name": "リアリストタイプ",
-        "6type_name": "レベルアップ（フレンドリータイプ）",
-        "3type_name": "人柄"
+        "type12": "25",
+        "type12_name": "リアリストタイプ",
+        "type6_name": "レベルアップ（フレンドリータイプ）",
+        "type3_name": "人柄"
     },
     {
-        "12type": "0",
-        "12type_name": "フリーダムタイプ",
-        "6type_name": "ステータス（天才肌タイプ）",
-        "3type_name": "直感"
+        "type12": "0",
+        "type12_name": "フリーダムタイプ",
+        "type6_name": "ステータス（天才肌タイプ）",
+        "type3_name": "直感"
     }
 ]

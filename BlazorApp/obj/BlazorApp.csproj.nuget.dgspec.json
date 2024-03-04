@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\source\\repos\\BlazorApp\\BlazorApp\\BlazorApp.csproj": {}
+    "C:\\Users\\user\\source\\repos\\bdmatome\\BlazorApp\\BlazorApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\source\\repos\\BlazorApp\\BlazorApp\\BlazorApp.csproj": {
+    "C:\\Users\\user\\source\\repos\\bdmatome\\BlazorApp\\BlazorApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\BlazorApp\\BlazorApp\\BlazorApp.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\bdmatome\\BlazorApp\\BlazorApp.csproj",
         "projectName": "BlazorApp",
-        "projectPath": "C:\\Users\\user\\source\\repos\\BlazorApp\\BlazorApp\\BlazorApp.csproj",
+        "projectPath": "C:\\Users\\user\\source\\repos\\bdmatome\\BlazorApp\\BlazorApp.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\BlazorApp\\BlazorApp\\obj\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\bdmatome\\BlazorApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
