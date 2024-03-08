@@ -19,6 +19,7 @@
 {
     if (matchedType != null)
     {
+        <button class="btn btn-success" @onclick="ShowRegisterModal">データベース登録</button>
         <div class="card">
             <div class="card-header">
                 Birthday Analyze Details
@@ -47,6 +48,26 @@
     }
 }
 
+<div class="modal" tabindex="-1" role="dialog" style="display:@(showRegisterModal ? "block" : "none"); background-color: rgba(0,0,0,0.5);">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">登録情報</h5>
+        <button type="button" class="close" @onclick="()=> showRegisterModal = false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" @bind="userName" placeholder="氏名を入力">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" @onclick="RegisterData">登録</button>
+        <button type="button" class="btn btn-secondary" @onclick="()=> showRegisterModal = false">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @code {
     private DateTime inputBirthday = DateTime.Now.AddYears(-20);
     private Type60? matchedType;
@@ -56,6 +77,8 @@
     private bool searchPerformed = false;
     private string inputBirthdayStr;
     private string seizaResult;
+    private string userName; // ユーザー名を格納する変数
+    private bool showRegisterModal = false; // モーダルダイアログの表示状態
 
     private async Task SearchBirthday()
     {
@@ -82,6 +105,30 @@
         catch (Exception ex)
         {
             // ここでエラーを処理します（例: ログを記録する）
+        }
+    }
+
+    // モーダルダイアログを表示するメソッド
+    private void ShowRegisterModal()
+    {
+        showRegisterModal = true;
+    }
+
+    // データベースにデータを登録するメソッド
+    private async Task RegisterData()
+    {
+        var postData = new { fullName = userName, birth = inputBirthday, type = matchedType.SixtyType , ownerID = 0 };
+        var jsonContent = JsonContent.Create(postData);
+        var httpClient = new HttpClient();
+        var response = await httpClient.PostAsync("https://localhost:7145/AnalyticalPerson", jsonContent);
+        if (response.IsSuccessStatusCode)
+        {
+            // 成功した場合の処理
+            showRegisterModal = false;
+        }
+        else
+        {
+            // エラーが発生した場合の処理
         }
     }
 
