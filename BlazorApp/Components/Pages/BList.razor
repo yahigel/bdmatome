@@ -1,9 +1,66 @@
-﻿@page "/blist"
-@rendermode InteractiveServer
+﻿@page "/AnalyticalPerson"
 
-<PageTitle>Birthday Analysis List</PageTitle>
-<h3>Birthday Analysis List</h3>
+<PageTitle>Analytical Persons List</PageTitle>
+
+<h1>Analytical Persons</h1>
+
+<p>This component demonstrates showing a list of analytical persons fetched from an external API.</p>
+
+@if (analyticalPersons == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Birthdate</th>
+                <th>Type</th>
+                <th>Owner ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in analyticalPersons)
+            {
+                <tr>
+                    <td>@person.id</td>
+                    <td>@person.fullName</td>
+                    <td>@person.birth.ToString("yyyy-MM-dd")</td> <!-- Adjust date format as needed -->
+                    <td>@person.type</td>
+                    <td>@person.ownerID</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
 @code {
+    private AnalyticalPerson[]? analyticalPersons;
 
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var httpClient = new HttpClient();
+            Console.WriteLine($"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            analyticalPersons = await httpClient.GetFromJsonAsync<AnalyticalPerson[]>("https://localhost:7145/AnalyticalPerson");
+            Console.WriteLine($"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
+    }
+
+    public class AnalyticalPerson
+    {
+        public int id { get; set; }
+        public string fullName { get; set; }
+        public DateTime birth { get; set; }
+        public int type { get; set; }
+        public int ownerID { get; set; }
+    }
 }
