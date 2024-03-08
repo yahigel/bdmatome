@@ -45,9 +45,7 @@ else
         try
         {
             var httpClient = new HttpClient();
-            Console.WriteLine($"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             analyticalPersons = await httpClient.GetFromJsonAsync<AnalyticalPerson[]>("https://localhost:7145/AnalyticalPerson");
-            Console.WriteLine($"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
         }
         catch (Exception ex)
         {

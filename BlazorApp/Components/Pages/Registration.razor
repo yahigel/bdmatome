@@ -1,0 +1,142 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>Birthday Registration</PageTitle>
+
+<EditForm Model="@this" OnValidSubmit="@SearchBirthday">
+    <DataAnnotationsValidator />
+
+    <div class="mb-3">
+        <h2 for="birthday" class="form-label">生年月日分析</h2>
+        <InputDate @bind-Value="@inputBirthday" id="birthday" class="form-control" />
+        <ValidationMessage For="@(() => inputBirthday)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Analyse</button>
+</EditForm>
+<br />
+@if (searchPerformed)
+{
+    if (matchedType != null)
+    {
+        <div class="card">
+            <div class="card-header">
+                Birthday Analyze Details
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">生年月日： @inputBirthdayStr</li>
+                <li class="list-group-item">星座占い： @seizaResult</li>
+                <li class="list-group-item">動物： @matchedType.Ani60 @matchedType.Ani12</li>
+                <li class="list-group-item">ＢＤＳ ＩＮＳＩＤＥ： @matchedType12.type3_name @matchedType12.type6_name @matchedType12.type12_name </li>
+                <li class="list-group-item">ＢＤＳ ＦＯＣＵＳ： @matchedTypeFocus12.type3_name @matchedTypeFocus12.type6_name @matchedTypeFocus12.type12_name </li>
+                <li class="list-group-item">詳細：<br /> @matchedType.Setume</li>
+                <li class="list-group-item">求める友情：<br /> @matchedGattsuri12.motomeruYujo</li>
+                <li class="list-group-item">恋愛の傾向：<br /> @matchedGattsuri12.loveMyaku</li>
+                <li class="list-group-item">育成方法：<br /> @matchedGattsuri12.sodatekata</li>
+                <li class="list-group-item">YESと言わせる方法：<br /> @matchedGattsuri12.yesmethod</li>
+            </ul>
+        </div>
+
+
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+            No matching user found.
+        </div>
+    }
+}
+
+@code {
+    private DateTime inputBirthday = DateTime.Now.AddYears(-20);
+    private Type60? matchedType;
+    private Mater12? matchedType12;
+    private Mater12? matchedTypeFocus12;
+    private Gattsuri12? matchedGattsuri12;
+    private bool searchPerformed = false;
+    private string inputBirthdayStr;
+    private string seizaResult;
+
+    private async Task SearchBirthday()
+    {
+        inputBirthdayStr = inputBirthday.ToString("yyyy/MM/dd");
+        seizaResult = DetermineZodiac(inputBirthday);
+
+        try
+        {
+            var httpClient = new HttpClient();
+            var bdss = await httpClient.GetFromJsonAsync<List<Type60>>("https://localhost:7165/data/60t.json");
+            var bdsMaster12 = await httpClient.GetFromJsonAsync<List<Mater12>>("https://localhost:7165/data/master12.json");
+            var bdsGattsuri12 = await httpClient.GetFromJsonAsync<List<Gattsuri12>>("https://localhost:7165/data/gattsuri12.json");
+
+            DateTime epoch = new DateTime(1899, 12, 30);
+            int daysSinceEpoch = (inputBirthday - epoch).Days;
+            int remainder = daysSinceEpoch % 60;
+
+            matchedType = bdss?.FirstOrDefault(t => t.SixtyType == remainder.ToString());
+            matchedType12 = bdsMaster12?.FirstOrDefault(y => y.type12 == matchedType.InsideType);
+            matchedTypeFocus12 = bdsMaster12?.FirstOrDefault(y => y.type12 == matchedType.FocusType);
+            matchedGattsuri12 = bdsGattsuri12?.FirstOrDefault(u => u.type12 == matchedType12.type12);
+            searchPerformed = true;
+        }
+        catch (Exception ex)
+        {
+            // ここでエラーを処理します（例: ログを記録する）
+        }
+    }
+
+    public string DetermineZodiac(DateTime birthday)
+    {
+        // 日付のみを取得（年は無視）
+        int dayOfYear = birthday.DayOfYear;
+        // 閏年の場合、2月29日以降の日付を調整
+        if (DateTime.IsLeapYear(birthday.Year) && dayOfYear > 59)
+        {
+            dayOfYear--;
+        }
+
+        // 星座を判定
+        if ((dayOfYear >= 80 && dayOfYear <= 109)) return "牡羊座";
+        if ((dayOfYear >= 110 && dayOfYear <= 140)) return "牡牛座";
+        if ((dayOfYear >= 141 && dayOfYear <= 171)) return "双子座";
+        if ((dayOfYear >= 172 && dayOfYear <= 203)) return "蟹座";
+        if ((dayOfYear >= 204 && dayOfYear <= 234)) return "獅子座";
+        if ((dayOfYear >= 235 && dayOfYear <= 265)) return "乙女座";
+        if ((dayOfYear >= 266 && dayOfYear <= 295)) return "天秤座";
+        if ((dayOfYear >= 296 && dayOfYear <= 324)) return "蠍座";
+        if ((dayOfYear >= 325 && dayOfYear <= 354)) return "射手座";
+        if ((dayOfYear >= 355 || dayOfYear <= 19)) return "山羊座";
+        if ((dayOfYear >= 20 && dayOfYear <= 49)) return "水瓶座";
+        if ((dayOfYear >= 50 && dayOfYear <= 79)) return "魚座";
+
+        return "不明"; // 不明な日付
+    }
+    
+    public class Type60
+    {
+        public string SixtyType { get; set; }
+        public string TwelveType { get; set; }
+        public string InsideType { get; set; }
+        public string FocusType { get; set; }
+        public string Setume { get; set; }
+        public string Ani60 { get; set; }
+        public string Ani12 { get; set; }
+    }
+
+    public class Mater12
+    {
+        public string type12 { get; set; }
+        public string type12_name { get; set; }
+        public string type6_name { get; set; }
+        public string type3_name { get; set; }
+    }
+
+    public class Gattsuri12
+    {
+        public string type12 { get; set; }
+        public string motomeruYujo { get; set; }
+        public string loveMyaku { get; set; }
+        public string sodatekata { get; set; }
+        public string yesmethod { get; set; }
+    }
+}
