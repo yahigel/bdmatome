@@ -35,6 +35,8 @@
     }
 }
 
+@inject HttpClient httpClient
+
 @code {
     [Parameter]
     public string Id { get; set; }
@@ -59,7 +61,9 @@
         try
         {
             var httpClient = new HttpClient();
+            //AnalyticalPerson analyticalPerson = await httpClient.GetFromJsonAsync<AnalyticalPerson>("https://localhost:7145/AnalyticalPerson/" + Id);
             AnalyticalPerson analyticalPerson = await httpClient.GetFromJsonAsync<AnalyticalPerson>("https://localhost:7145/AnalyticalPerson/" + Id);
+
 
             inputBirthday = analyticalPerson.birth;
             fullName = analyticalPerson.fullName;

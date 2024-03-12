@@ -1,4 +1,4 @@
-﻿@page "/AnalyticalPerson"
+﻿@page "/BList"
 
 <PageTitle>総合分析履歴データベース</PageTitle>
 
@@ -30,6 +30,7 @@ else
         </tbody>
     </table>
 }
+@inject HttpClient httpClient
 
 @code {
     private AnalyticalPerson[]? analyticalPersons;
