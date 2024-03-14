@@ -1,0 +1,16 @@
+@bdaAPI_HostAddress = http://localhost:5196
+
+GET {{bdaAPI_HostAddress}}/AnalyticalPerson/
+Accept: application/json
+
+###
+
+POST {{bdaAPI_HostAddress}}/AnalyticalPerson
+Content-Type: application/json
+
+{
+    "FullName": "ƒTƒ“ƒvƒ‹ ‘¾˜Y",
+    "Birth": "1990-01-01T00:00:00",
+    "Type": 1,
+    "OwnerID": 123
+}
