@@ -14,6 +14,7 @@ public class AnalyticalPersonController : ControllerBase
         _context = context;
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AnalyticalPerson>>> Get()
     {
