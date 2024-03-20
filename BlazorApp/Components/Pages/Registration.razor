@@ -121,7 +121,7 @@
         var postData = new { fullName = userName, birth = inputBirthday, type = matchedType.SixtyType , ownerID = 0 };
         var jsonContent = JsonContent.Create(postData);
         var httpClient = new HttpClient();
-        var response = await httpClient.PostAsync("https://localhost:7145/AnalyticalPerson", jsonContent);
+        var response = await httpClient.PostAsync("https://localhost:7165/AnalyticalPerson", jsonContent);
         if (response.IsSuccessStatusCode)
         {
             // 成功した場合の処理

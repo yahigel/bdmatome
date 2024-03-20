@@ -21,7 +21,7 @@ public class AuthController : ControllerBase
     {
         var clientId = "2003996418";
         var clientSecret = "af1ca219bda830894a12795187237083";
-        var redirectUri = "https://localhost:7145/Auth/callback";
+        var redirectUri = "https://localhost:7165/Auth/callback";
 
         using (var httpClient = new HttpClient())
         {
